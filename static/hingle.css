@@ -460,7 +460,7 @@ main img {
     font-size: inherit;
     margin-right: .4em;
     display: inline-block;
-    font-family: "FontAwesome";
+    font-family: "BIZ UDPMincho", serif;
 }
 
 .post-meta .date:before{ content: "\f017" }
