@@ -72,7 +72,7 @@
 <p>输出如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">打印这段话</span><br></pre></td></tr></table></figure>
 <p>显然不对。那么把打印函数也打印出来呢？</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">打印这段话(</span><br><span class="line">    &quot;打印这段话&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;&quot;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">打印这段话(</span><br><span class="line">    &quot;打印这段话(</span><br><span class="line">        </span><br><span class="line">    )&quot;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <p>停在这个括号里，我就没再写下去了，因为问题已经出现了：即使再怎么递归下去，这样打印出的东西永远会少一层「打印这段话」。因此我武断地认为：这种问题正如同那些不幸涉及自指性的数学系统一样陷入了悖论的泥沼，是无解的问题。</p>
 <p>但 Quine 程序向我指出了问题所在：我的实现思路不正确。Quine
 的思路非常简单：</p>
