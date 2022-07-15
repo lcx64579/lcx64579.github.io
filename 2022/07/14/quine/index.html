@@ -84,7 +84,7 @@ Python3 举例，写一个 Quine 程序。</p>
 <h2 id="实现思路">实现思路</h2>
 <p>首先要知道，Python
 这样的编程语言要求变量「先定义再使用」，因此我们把上面的描述调转一下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">str = 「将字符串 str 打印两遍，其中第二遍要打印在一对引号里。」</span><br><span class="line">将字符串 str 打印两遍，其中第二遍要打印在一对引号里。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">str = 「将字符串 str 打印两遍，其中第一遍要打印成一个字符串定义。」</span><br><span class="line">将字符串 str 打印两遍，其中第一遍要打印成一个字符串定义。</span><br></pre></td></tr></table></figure>
 <p>现在我们可以把这段代码翻译成 Python
 了。代码还没写完，我们暂时不知道<code>str</code>的内容，因此先留空：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">str</span> = <span class="string">&quot;&quot;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span>)</span><br></pre></td></tr></table></figure>
