@@ -108,7 +108,7 @@ Python
 也可以用单引号来表示字符串，但一番尝试后，输出总是和源代码不一样。</p>
 <p>既然如此，干脆双引号也用<code>%</code>来替换掉好了：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">str</span> = <span class="string">&quot;str = %c%s%c; print(str %% str)&quot;</span>; <span class="built_in">print</span>(<span class="built_in">str</span> % (<span class="string">&#x27;&quot;&#x27;</span>, <span class="built_in">str</span>, <span class="string">&#x27;&quot;&#x27;</span>))</span><br></pre></td></tr></table></figure>
-<p><code>%c</code>表示输出一个字符。等等，我们还要把外面的代码抄进字符串里，如果还用<code>str % ('"', str, '""')</code>这样的表示法，双引号就又出现了。还是换成
+<p><code>%c</code>表示输出一个字符。等等，我们还要把外面的代码抄进字符串里，如果还用<code>str % ('"', str, '"')</code>这样的表示法，双引号就又出现了。还是换成
 ASCII 码来代替吧：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">str</span> = <span class="string">&quot;str = %c%s%c; print(str %% (chr(34), str, chr(34)))&quot;</span>; <span class="built_in">print</span>(<span class="built_in">str</span> % (<span class="built_in">chr</span>(<span class="number">34</span>), <span class="built_in">str</span>, <span class="built_in">chr</span>(<span class="number">34</span>)))</span><br></pre></td></tr></table></figure>
 <p>这样就可以消除掉外面代码里的引号了。运行试试：</p>
