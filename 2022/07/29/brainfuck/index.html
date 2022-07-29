@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     
+    <meta charset="UTF-8">
+    <title>用 Brainfuck 语言写 Hello World! - 佛得角大海豹的博客</title>
+    <link rel="shortcut icon" href="/static/img/icon.png">
+    <link rel="icon" href="/static/img/icon.png" sizes="192x192"/>
+    
+<link rel="stylesheet" href="/static/kico.css">
+<link rel="stylesheet" href="/static/hingle.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome/css/font-awesome.min.css">
+
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1"/>
+    <meta property="og:site_name" content="佛得角大海豹的博客">
+    <meta property="og:title" content="用 Brainfuck 语言写 Hello World!"/>
+    
+    <style>body:before{ content: ''; background-image: url(https://api.paugram.com/wallpaper?source=gh) }</style>
+    
+<meta name="generator" content="Hexo 6.1.0"><link rel="alternate" href="/atom.xml" title="佛得角大海豹的博客" type="application/atom+xml">
+</head>
+
+  <body>
+    <header>
+    <div class="head-title">
+        <h4>佛得角大海豹的博客</h4>
+    </div>
+    <div class="head-action">
+        <div class="toggle-btn"></div>
+        <div class="light-btn"></div>
+        <div class="search-btn"></div>
+    </div>
+    <form class="head-search" method="post">
+        <input type="text" name="s" placeholder="搜索什么？">
+    </form>
+    <nav class="head-menu">
+        <a href="/">首页</a>
+        <div class="has-child">
+            <a>分类</a>
+            <div class="sub-menu">
+                <a class="category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a><a class="category-link" href="/categories/%E5%B0%8F%E8%AF%B4/">小说</a><a class="category-link" href="/categories/%E8%AF%97%E6%AD%8C/">诗歌</a><a class="category-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a>
+            </div>
+        </div>
+        
+            <a href="/about">关于我</a>
+        
+    </nav>
+</header>
+
+    <main>
+    <div class="wrap min">
+        <section class="post-title">
+            <h2>用 Brainfuck 语言写 Hello World!</h2>
+            <div class="post-meta">
+                <time class="date">2022.07.29</time>
+            
+                <span class="category"><a class="category-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a></span>
+            
+            </div>
+        </section>
+        <article class="post-content">
+        
+            <h2 id="brainfuck-语言是什么">Brainfuck 语言是什么？</h2>
+<p>Brainfuck 的代码大概长这样：</p>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">++++++++++</span><span class="title">[</span>&gt;<span class="literal">+++++++</span>&gt;<span class="literal">++++++++++</span>&gt;<span class="literal">+++</span>&gt;<span class="literal">+++++++++</span>&gt;<span class="literal">+</span>&lt;&lt;&lt;&lt;&lt;<span class="literal">-</span><span class="title">]</span>&gt;<span class="literal">++</span><span class="string">.</span>&gt;<span class="literal">+</span><span class="string">.</span><span class="literal">+++++++</span><span class="string">.</span><span class="string">.</span><span class="literal">+++</span><span class="string">.</span>&gt;<span class="literal">++</span><span class="string">.</span>&gt;<span class="literal">---</span><span class="string">.</span>&lt;&lt;<span class="string">.</span><span class="literal">+++</span><span class="string">.</span><span class="literal">------</span><span class="string">.</span><span class="literal">--------</span><span class="string">.</span>&gt;<span class="literal">+</span><span class="string">.</span>&gt;&gt;<span class="string">.</span></span><br></pre></td></tr></table></figure>
+<p>总之视觉效果很震撼。</p>
+<p>Brainfuck 语言是一门极小的图灵完备语言。它只有八种有效字符：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">操作符</th>
+<th style="text-align: left;">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">&gt;</td>
+<td style="text-align: left;">指针向右移一字节</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">&lt;</td>
+<td style="text-align: left;">指针向左移一字节</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">+</td>
+<td style="text-align: left;">当前指向字节的值加一</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">-</td>
+<td style="text-align: left;">当前指向字节的值减一</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">,</td>
+<td
+style="text-align: left;">请求一个输入，将其ASCII码存到当前指向字节</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">.</td>
+<td
+style="text-align: left;">将当前指向字节的值作为ASCII码输出一个字符</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">[</td>
+<td style="text-align: left;">循环体开头</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">]</td>
+<td style="text-align: left;">循环体结尾，当前指向字节为0时退出循环</td>
+</tr>
+</tbody>
+</table>
+<p>其他任何字符都视为注释。看到这里你应该能想象出这种代码会有多么折磨了。</p>
+<p>在 macOS 上，若你有 Homebrew 环境，你可以用这条指令安装一个
+Brainfuck 解释器：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew install brainfuck</span><br></pre></td></tr></table></figure>
+<p>该解释器的实现来自于<a
+target="_blank" rel="noopener" href="https://github.com/fabianishere/brainfuck">这个 GitHub
+仓库</a>。</p>
+<h2 id="例程入门">例程入门</h2>
+<p>你可以想象一个指针指向一排格子，每个格子内的数字都要在0~255之间。最开始指针指向最左边第一个格子，当收到指令<code>&gt;</code>时，指针向右跑去第二个格子；再收到指令<code>&lt;</code>时，指针向左跑回第一个格子。</p>
+<p>现在写一份代码：</p>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="string">.</span></span><br></pre></td></tr></table></figure>
+<p>在第一格里作连续48个<code>+</code>，最后用一个<code>.</code>将这个值对应的
+ASCII 字符输出。这段代码的作用就是输出一个字符「0」，也就是 ASCII
+码值为48的字符。</p>
+<p>将代码文件保存成随便什么文件名，比如<code>first_program.bf</code>。使用下面的命令把这个文件传给解释器就可以运行了：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brainfuck first_program.bf</span><br></pre></td></tr></table></figure>
+<p>输出如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0</span><br></pre></td></tr></table></figure>
+<p>顺带一提，「0」的后面连换行符都没有。如果你在用
+bash，下一个命令提示符会直接跟在0后面；如果你和我一样在用
+zsh，默认配置下会有一个莫名其妙的百分号<code>%</code>跟在后面，并自动帮你换了一行。</p>
+<p>如果你懒得为这种事写个文件，这个解释器支持你直接把代码在终端里作为参数传给它，用<code>-e</code>关键字就好：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brainfuck -e <span class="string">&quot;++++++++++++++++++++++++++++++++++++++++++++++++.&quot;</span></span><br></pre></td></tr></table></figure>
+<p>连续48个<code>+</code>太不方便了，而且有可能数错。你刚才可能和我一样偷了个懒，只打了六个加号，然后复制粘贴直到总共八遍。这其实是个好思路，把48拆成6乘8来实现，就可以减少许多加号。换成
+Brainfuck 来写就是把6加八遍，或者把8加六遍。我们用前者：</p>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">++++++++</span><span class="title">[</span>&gt;<span class="literal">++++++</span>&lt;<span class="literal">-</span><span class="title">]</span>&gt;<span class="string">.</span></span><br></pre></td></tr></table></figure>
+<p>解释一下这段代码：</p>
+<ol type="1">
+<li><code>++++++++</code>在第一格里放8；</li>
+<li><code>[</code>开始循环：
+<ol type="1">
+<li><code>&gt;</code>右移到第二格；</li>
+<li><code>++++++</code>给第二格加上6；</li>
+<li><code>&lt;</code>左移到第一格；</li>
+<li><code>-</code>给第一格减去1；</li>
+</ol></li>
+<li><code>]</code>看一下当前格（第一格）归零了没有。如果没有，回到第2步。</li>
+<li><code>&gt;</code>右移到第二格；</li>
+<li><code>.</code>把第二格里这个字符输出。也即输出 ASCII
+码为48的字符，也就是「0」。</li>
+</ol>
+<p>Brainfuck
+会把其他文字都当注释，所以要是看不懂，你可以多写点注释多换些行。</p>
+<h2 id="来写-hello-world">来写 Hello World!</h2>
+<p>想想就很折磨，太棒了！</p>
+<p>最简单的实现方式就是直接去查 ASCII
+码表，然后在每一格里只用<code>+</code>填好字，然后输出。</p>
+<p>但那样就太多加号了。相比那种，这里有稍微高级一点的实现，加号的数量比较好看：</p>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">++++++++++</span> <span class="comment">10遍</span></span><br><span class="line"><span class="title">[</span></span><br><span class="line"><span class="comment">	</span>&gt;<span class="literal">+++++++</span>    <span class="comment">第二格：加7</span></span><br><span class="line"><span class="comment">	</span>&gt;<span class="literal">++++++++++</span> <span class="comment">第三格：加10</span></span><br><span class="line"><span class="comment">	</span>&gt;<span class="literal">+++</span>        <span class="comment">第四格：加3</span></span><br><span class="line"><span class="comment">	</span>&gt;<span class="literal">+++++++++</span>  <span class="comment">第五格：加9</span></span><br><span class="line"><span class="comment">	</span>&gt;<span class="literal">+</span>          <span class="comment">第六格：加1</span></span><br><span class="line"><span class="comment">	</span>&lt;&lt;&lt;&lt;&lt;<span class="literal">-</span>      <span class="comment">循环条件，第一格：减1</span></span><br><span class="line"><span class="title">]</span>         <span class="comment">循环完成，二～六格为：70，100，30，90，10</span></span><br><span class="line">&gt;<span class="literal">++</span><span class="string">.</span>      <span class="comment">第二格：72，输出：H</span></span><br><span class="line">&gt;<span class="literal">+</span><span class="string">.</span>       <span class="comment">第三格：101，输出：e</span></span><br><span class="line"><span class="literal">+++++++</span><span class="string">.</span><span class="string">.</span> <span class="comment">第三格：108，输出两遍：ll</span></span><br><span class="line"><span class="literal">+++</span><span class="string">.</span>      <span class="comment">第三格：111，输出：o</span></span><br><span class="line">&gt;<span class="literal">++</span><span class="string">.</span>      <span class="comment">第四格：32，输出空格</span></span><br><span class="line">&gt;<span class="literal">---</span><span class="string">.</span>     <span class="comment">第五格：87，输出W</span></span><br><span class="line">&lt;&lt;<span class="string">.</span>       <span class="comment">第三格：还是111，输出o</span></span><br><span class="line"><span class="literal">+++</span><span class="string">.</span>      <span class="comment">第三格：114，输出r</span></span><br><span class="line"><span class="literal">------</span><span class="string">.</span>   <span class="comment">第三格：108，输出l</span></span><br><span class="line"><span class="literal">--------</span><span class="string">.</span> <span class="comment">第三格：100，输出d</span></span><br><span class="line">&gt;<span class="literal">+</span><span class="string">.</span>       <span class="comment">第四格：33，输出!</span></span><br><span class="line">&gt;&gt;<span class="string">.</span>       <span class="comment">第六格：10，换行</span></span><br></pre></td></tr></table></figure>
+<p>我贴心地加了注释。如果你只是想要吓人，可以去掉注释写在一行里：</p>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">++++++++++</span><span class="title">[</span>&gt;<span class="literal">+++++++</span>&gt;<span class="literal">++++++++++</span>&gt;<span class="literal">+++</span>&gt;<span class="literal">+++++++++</span>&gt;<span class="literal">+</span>&lt;&lt;&lt;&lt;&lt;<span class="literal">-</span><span class="title">]</span>&gt;<span class="literal">++</span><span class="string">.</span>&gt;<span class="literal">+</span><span class="string">.</span><span class="literal">+++++++</span><span class="string">.</span><span class="string">.</span><span class="literal">+++</span><span class="string">.</span>&gt;<span class="literal">++</span><span class="string">.</span>&gt;<span class="literal">---</span><span class="string">.</span>&lt;&lt;<span class="string">.</span><span class="literal">+++</span><span class="string">.</span><span class="literal">------</span><span class="string">.</span><span class="literal">--------</span><span class="string">.</span>&gt;<span class="literal">+</span><span class="string">.</span>&gt;&gt;<span class="string">.</span></span><br></pre></td></tr></table></figure>
+<p>在 <a
+target="_blank" rel="noopener" href="https://github.com/fabianishere/brainfuck/blob/master/examples/hello-short.bf">GitHub
+仓库</a>里有个更短的 Helloworld
+官方例程<code>brainfuck/examples/hello-short.bf</code>，套了一大堆循环，看起来很恐怖，如果有兴趣可以分析一下试试看。</p>
+<p>另外这语言是可以写
+<a href="/2022/07/14/quine/" title="Quine 程序">Quine 程序</a>的。毕竟它图灵完备，而且也能输出。太可怕了。</p>
+
+        </article>
+        <section class="post-near">
+            <ul>
+                
+                    <li>上一篇: 看完啦 (つд⊂)</li>
+                
+                
+                    <li>下一篇: <a href="/2022/07/14/quine/">Quine 程序：打印自己的源代码</a></li>
+                
+            </ul>
+        </section>
+        
+    
+        <section class="post-author">
+        
+            <figure class="author-avatar">
+                <img src="/images/favicon.png" alt="GreatSeal" />
+            </figure>
+        
+            <div class="author-info">
+                <h4>GreatSeal</h4>
+                <p>来自佛得角的大海豹。</p>
+            </div>
+        </section>
+    
+    </div>
+</main>
+
+    <footer>
+    <div class="buttons">
+        <a class="to-top" href="#"></a>
+    </div>
+    <div class="wrap min">
+        <section class="widget">
+            <div class="row">
+                <div class="col-m-4">
+                    <h3 class="title-recent">最新文章：</h3>
+                    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2022/07/29/brainfuck/">用 Brainfuck 语言写 Hello World!</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/07/14/quine/">Quine 程序：打印自己的源代码</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/04/09/Hello%20World!/">Hello World!</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/05/01/%E8%AF%97%E6%AD%8C/">诗歌</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/25/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%20-%20%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/">离散数学 - 课堂笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/12/%E5%85%8B%E9%9A%86/">克隆</a></li></ul>
+                </div>
+                <div class="col-m-4">
+                    <h3 class="title-date">时光机：</h3>
+                    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li></ul>
+                </div>
+                <div class="col-m-4">
+                    <h3 class="title-tags">标签云：</h3>
+                    <a href="/tags/%E5%B0%8F%E8%AF%B4/" style="font-size: 20px;">小说</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 10px;">数学</a> <a href="/tags/%E6%9E%81%E5%AE%A2/" style="font-size: 10px;">极客</a> <a href="/tags/%E8%AF%97%E6%AD%8C/" style="font-size: 10px;">诗歌</a> <a href="/tags/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">课堂笔记</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 10px;">随笔</a>
+                </div>
+            </div>
+        </section>
+        <section class="sub-footer">
+            <p>© 2022 <a href="/">佛得角大海豹的博客</a>. All Rights Reserved. Theme By <a href="https://github.com/Dreamer-Paul/Hingle" target="_blank" rel="nofollow">Hingle</a>.</p>
+        </section>
+    </div>
+</footer>
+
+
+<script src="/static/kico.js"></script>
+<script src="/static/hingle.js"></script>
+
+
+<script>var hingle = new Paul_Hingle({"copyright":true,"night":true});</script>
+
+  </body>
+</html>
