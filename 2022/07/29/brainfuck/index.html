@@ -103,11 +103,11 @@ style="text-align: left;">将当前指向字节的值作为ASCII码输出一个�
 </tr>
 <tr class="odd">
 <td style="text-align: right;">[</td>
-<td style="text-align: left;">循环体开头</td>
+<td style="text-align: left;">循环体开头，当前指向字节为0时退出循环</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">]</td>
-<td style="text-align: left;">循环体结尾，当前指向字节为0时退出循环</td>
+<td style="text-align: left;">循环体结尾</td>
 </tr>
 </tbody>
 </table>
@@ -140,14 +140,14 @@ Brainfuck 来写就是把6加八遍，或者把8加六遍。我们用前者：</
 <p>解释一下这段代码：</p>
 <ol type="1">
 <li><code>++++++++</code>在第一格里放8；</li>
-<li><code>[</code>开始循环：
+<li><code>[</code>看一下当前格（第一格）归零了没有。如果没有，开始循环：
 <ol type="1">
 <li><code>&gt;</code>右移到第二格；</li>
 <li><code>++++++</code>给第二格加上6；</li>
 <li><code>&lt;</code>左移到第一格；</li>
 <li><code>-</code>给第一格减去1；</li>
 </ol></li>
-<li><code>]</code>看一下当前格（第一格）归零了没有。如果没有，回到第2步。</li>
+<li><code>]</code>回到第2步；</li>
 <li><code>&gt;</code>右移到第二格；</li>
 <li><code>.</code>把第二格里这个字符输出。也即输出 ASCII
 码为48的字符，也就是「0」。</li>
