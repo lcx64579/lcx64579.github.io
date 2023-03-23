@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     
+    <meta charset="UTF-8">
+    <title>使用 MacOS 的「快捷指令」翻译论文中的选中段落 - 佛得角大海豹的博客</title>
+    <link rel="shortcut icon" href="/static/img/icon.png">
+    <link rel="icon" href="/static/img/icon.png" sizes="192x192"/>
+    
+<link rel="stylesheet" href="/static/kico.css">
+<link rel="stylesheet" href="/static/hingle.css">
+
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1"/>
+    <meta property="og:site_name" content="佛得角大海豹的博客">
+    <meta property="og:title" content="使用 MacOS 的「快捷指令」翻译论文中的选中段落"/>
+    
+    <style>body:before{ content: ''; background-image: url(https://api.paugram.com/wallpaper?source=gh) }</style>
+    
+<meta name="generator" content="Hexo 6.1.0"><link rel="alternate" href="/atom.xml" title="佛得角大海豹的博客" type="application/atom+xml">
+</head>
+
+  <body>
+    <header>
+    <div class="head-title">
+        <h4>佛得角大海豹的博客</h4>
+    </div>
+    <div class="head-action">
+        <div class="toggle-btn"></div>
+        <div class="light-btn"></div>
+        <div class="search-btn"></div>
+    </div>
+    <form class="head-search" method="post">
+        <input type="text" name="s" placeholder="搜索什么？">
+    </form>
+    <nav class="head-menu">
+        <a href="/">首页</a>
+        <div class="has-child">
+            <a>分类</a>
+            <div class="sub-menu">
+                <a class="category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a><a class="category-link" href="/categories/%E5%B0%8F%E8%AF%B4/">小说</a><a class="category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a><a class="category-link" href="/categories/%E8%AF%97%E6%AD%8C/">诗歌</a><a class="category-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a>
+            </div>
+        </div>
+        
+            <a href="/about">关于我</a>
+        
+    </nav>
+</header>
+
+    <main>
+    <div class="wrap min">
+        <section class="post-title">
+            <h2>使用 MacOS 的「快捷指令」翻译论文中的选中段落</h2>
+            <div class="post-meta">
+                <time class="date">2022.10.05</time>
+            
+                <span class="category"><a class="category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></span>
+            
+            </div>
+        </section>
+        <article class="post-content">
+        
+            <h2 id="为什么不直接使用翻译器">为什么不直接使用翻译器？</h2>
+<p>诸如 DeepL 一类的工具可以很方便地做到选中段落的翻译。当 DeepL
+在后台运行时，选中论文中的段落后，双击<code>⌘(Cmd)</code> +
+<code>C</code>即可立刻将选中内容拷贝到 DeepL 中翻译。使用「有道词典」等
+App，甚至可以做到划出段落时自动弹出浮窗翻译。</p>
+<p>那么为什么不直接使用这些翻译器呢？笔者在使用这些翻译器时，常出现的一个问题是处理论文中的单词折行。例如，单词<code>translate</code>出现在行尾时，会被排版系统拆分为<code>trans-</code>和<code>late</code>，其中<code>trans-</code>放在前一行尾，<code>late</code>放在后一行始。在拷贝到翻译器中时，这些折行仍会出现在段落中，变成<code>trans- late</code>这样的文本。一些翻译器在处理这种文本时会出现问题，例如
+DeepL 有时会把它们当作两个单词对待，有时又会莫名其妙丢词错译。</p>
+<p>一个简单的处理方式是：把段落粘贴到一个字处理软件中，例如
+VSCode，或者笔者使用的
+Kate，然后使用「查找-替换」功能将所有的<code>-</code>（短横线+空格）替换为空，然后再将替换好的文本拷贝到翻译器里。如果只是偶尔使用的话，这样也未尝不可，但经常需要调用翻译功能时，这样重复就太繁琐了。</p>
+<p>因此笔者尝试将这一过程自动化。说到自动化，很多人会想到 Alfred
+，但笔者没有为之付款；况且杀鸡焉用牛刀呢，MacOS
+自带的「<strong>快捷指令</strong>」功能就可以方便地做到。</p>
+<h2 id="快捷指令制作">快捷指令制作</h2>
+<p>遵循以下步骤，让我们来制作属于自己的自动化指令！</p>
+<ol type="1">
+<li><p>在启动台中找到「快捷指令」应用，默认情况下它应当在「其他」文件夹里。或者，你也可以按下<code>⌘(Cmd)</code>
++ <code>空格</code>打开聚焦，输入「快捷指令」查找该应用。</p></li>
+<li><p>打开应用后，按<code>⌘(Cmd)</code> +
+<code>N</code>新建一个快捷指令，或者也可以按下右上角的「+」号来新建。新的快捷指令窗口如下。</p></li>
+</ol>
+<figure>
+<img src="https://s1.ax1x.com/2022/10/05/x1ieED.png" alt="快捷指令" />
+<figcaption aria-hidden="true">快捷指令</figcaption>
+</figure>
+<ol start="3" type="1">
+<li><p>单击顶端的「快捷指令名称」为这条指令起个名字，比如「论文翻译」。你也可以点击名称左边的图标来更换它。</p></li>
+<li><p>点击右上角的按钮切换到「快捷指令详细信息」选项卡，点击「添加键盘快捷键」，并为其指定一个组合键。我选择了<code>⌃(Ctrl)</code>
++ <code>⌥(Option)</code> + <code>⌘(Cmd)</code> +
+<code>X</code>。我建议将这一组合键设置得尽可能生僻，以最大程度防止与已有键位冲突。</p></li>
+<li><p>现在，它应该自动为你勾选了上方的「作为快速操作使用」和「服务菜单」，并在左边的流程中添加了一条「从<code>快速操作</code>中接收<code>所有</code>输入」。单击<code>所有</code>，将其修改为仅勾选<code>文本</code>。</p></li>
+</ol>
+<figure>
+<img src="https://s1.ax1x.com/2022/10/05/x1isbT.png"
+alt="快速操作选单" />
+<figcaption aria-hidden="true">快速操作选单</figcaption>
+</figure>
+<ol start="6" type="1">
+<li><p>单击右上角按钮切换到「操作库」。配合右侧的搜索功能，找到这些组件，将它们依次拖动到流程中：「从输入中获取文本」，「替换文本」，「翻译文本」，「显示结果」。然后，对流程进行以下修改：</p>
+<ul>
+<li><p>对于第一项：接收文本输入，将「如果没有输入」的反应修改为「停止并回应」；</p></li>
+<li><p>对于第三项：替换，在第一个输入框里填入<code>-</code>（短横线+空格），将第二个输入框留空（它应该会显示一个占位符「世界」）；</p></li>
+<li><p>对于第四项：翻译，将源语言选为「英语（美国）」，将目标语言选为「中文（普通话
+- 中国大陆）」。</p>
+<blockquote>
+<p>源语言不建议使用「检测到的语言」，这个功能偶尔会识别出怪异的结果。</p>
+</blockquote></li>
+</ul></li>
+</ol>
+<figure>
+<img src="https://s1.ax1x.com/2022/10/05/x1Fes0.png" alt="指令流程" />
+<figcaption aria-hidden="true">指令流程</figcaption>
+</figure>
+<ol start="7" type="1">
+<li>直接关闭编辑窗口。你的指令应该已经自动保存了。关闭「快捷指令」应用。</li>
+</ol>
+<p>现在找一篇论文，选中一段文字，按下你设定的快捷键，看看有没有弹出翻译结果。</p>
+<figure>
+<img src="https://s1.ax1x.com/2022/10/05/x1ksNF.png" alt="结果" />
+<figcaption aria-hidden="true">结果</figcaption>
+</figure>
+<p>观察到第一行末、第二行始的<code>transduc- tion</code>被成功地翻译成了「转导」。</p>
+<h2 id="总结">总结</h2>
+<p>你成功地自动化了论文翻译处理折行的流程！但说到底，如果要在科研上有所精进，学会直接阅读英文原文十分重要。翻译器不是万能的——例如「Transformer」一词，其对应的中文翻译尚未确定，但翻译器仍会试图把它译为「变换器」「变压器」，甚至「变形金刚」。尽管变形金刚模型听起来很帅，但它对于理解论文内容只会造成反效果。</p>
+
+        </article>
+        <section class="post-near">
+            <ul>
+                
+                    <li>上一篇: <a href="/2023/03/22/%E4%BA%94%E7%AC%94%E6%89%93%E5%AD%97%E5%85%A5%E9%97%A8/">五笔打字入门</a></li>
+                
+                
+                    <li>下一篇: <a href="/2022/07/29/brainfuck/">用 Brainfuck 语言写 Hello World!</a></li>
+                
+            </ul>
+        </section>
+        
+            <section class="post-tags">
+            <a class="-none-link" href="/tags/MacOS/" rel="tag">MacOS</a>
+            </section>
+        
+    
+        <section class="post-author">
+        
+            <figure class="author-avatar">
+                <img src="/images/favicon.png" alt="GreatSeal" />
+            </figure>
+        
+            <div class="author-info">
+                <h4>GreatSeal</h4>
+                <p>来自佛得角的大海豹。</p>
+            </div>
+        </section>
+    
+    </div>
+</main>
+
+    <footer>
+    <div class="buttons">
+        <a class="to-top" href="#"></a>
+    </div>
+    <div class="wrap min">
+        <section class="widget">
+            <div class="row">
+                <div class="col-m-4">
+                    <h3 class="title-recent">最新文章：</h3>
+                    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2023/03/22/%E4%BA%94%E7%AC%94%E6%89%93%E5%AD%97%E5%85%A5%E9%97%A8/">五笔打字入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/05/macos-shortcut-translate/">使用 MacOS 的「快捷指令」翻译论文中的选中段落</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/07/29/brainfuck/">用 Brainfuck 语言写 Hello World!</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/07/14/quine/">Quine 程序：打印自己的源代码</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/04/09/Hello%20World!/">Hello World!</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/05/01/%E8%AF%97%E6%AD%8C/">诗歌</a></li></ul>
+                </div>
+                <div class="col-m-4">
+                    <h3 class="title-date">时光机：</h3>
+                    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li></ul>
+                </div>
+                <div class="col-m-4">
+                    <h3 class="title-tags">标签云：</h3>
+                    <a href="/tags/MacOS/" style="font-size: 10px;">MacOS</a> <a href="/tags/%E5%B0%8F%E8%AF%B4/" style="font-size: 20px;">小说</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 10px;">数学</a> <a href="/tags/%E6%9E%81%E5%AE%A2/" style="font-size: 15px;">极客</a> <a href="/tags/%E8%AF%97%E6%AD%8C/" style="font-size: 10px;">诗歌</a> <a href="/tags/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">课堂笔记</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 10px;">随笔</a>
+                </div>
+            </div>
+        </section>
+        <section class="sub-footer">
+            <p>© 2023 <a href="/">佛得角大海豹的博客</a>. All Rights Reserved. Theme By <a href="https://github.com/Dreamer-Paul/Hingle" target="_blank" rel="nofollow">Hingle</a>.</p>
+        </section>
+    </div>
+</footer>
+
+
+<script src="/static/kico.js"></script>
+<script src="/static/hingle.js"></script>
+
+
+<script>var hingle = new Paul_Hingle({"copyright":false,"night":false});</script>
+
+  </body>
+</html>

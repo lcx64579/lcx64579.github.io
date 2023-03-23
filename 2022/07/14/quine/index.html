@@ -70,15 +70,22 @@
 <p>如何编写一个程序，让它打印出自己的源代码？</p>
 </blockquote>
 <p>刚刚学习编程时，直觉上我觉得这似乎不太可能。我首先能想到的解决思路是：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">打印这段话(</span><br><span class="line">    &quot;打印这段话&quot;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">打印这段话(
+    &quot;打印这段话&quot;
+)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>输出如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">打印这段话</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">打印这段话<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>显然不对。那么把打印函数也打印出来呢？</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">打印这段话(</span><br><span class="line">    &quot;打印这段话(</span><br><span class="line">        </span><br><span class="line">    )&quot;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">打印这段话(
+    &quot;打印这段话(
+        
+    )&quot;
+)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>停在这个括号里，我就没再写下去了，因为问题已经出现了：即使再怎么递归下去，这样打印出的东西永远会少一层「打印这段话」。因此我武断地认为：这种问题正如同那些不幸涉及自指性的数学系统一样陷入了悖论的泥沼，是无解的问题。</p>
 <p>但 Quine 程序向我指出了问题所在：我的实现思路不正确。Quine
 的思路非常简单：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">将下面这段话打印两遍，其中第二遍要打印在一对引号里：</span><br><span class="line">「将下面这段话打印两遍，其中第二遍要打印在一对引号里：」</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">将下面这段话打印两遍，其中第二遍要打印在一对引号里：
+「将下面这段话打印两遍，其中第二遍要打印在一对引号里：」<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>Quine
 的关键在于使用一个短语作代指：「下面这段话」。这个代指短语巧妙地解决了递归的问题——我无需把已经说过的话再说一遍。</p>
 <p>正如我们在一个话题中第二次提及某人时会用「他/她」这样的代词来代指，编程语言也有许多实现代指的方式。下面我将用
@@ -86,56 +93,63 @@ Python3 举例，写一个 Quine 程序。</p>
 <h2 id="实现思路">实现思路</h2>
 <p>首先要知道，Python
 这样的编程语言要求变量「先定义再使用」，因此我们把上面的描述调转一下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">str = 「将字符串 str 打印两遍，其中第一遍要打印成一个字符串定义。」</span><br><span class="line">将字符串 str 打印两遍，其中第一遍要打印成一个字符串定义。</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">str &#x3D; 「将字符串 str 打印两遍，其中第一遍要打印成一个字符串定义。」
+将字符串 str 打印两遍，其中第一遍要打印成一个字符串定义。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>现在我们可以把这段代码翻译成 Python
 了。代码还没写完，我们暂时不知道<code>str</code>的内容，因此先留空：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">str</span> = <span class="string">&quot;&quot;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span>)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token builtin">str</span> <span class="token operator">=</span> <span class="token string">""</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>已有的代码当然要抄进去。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">str</span> = <span class="string">&quot;str = &quot;</span><span class="string">&quot;\nprint(str)&quot;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span>)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token builtin">str</span> <span class="token operator">=</span> <span class="token string">"str = "</span><span class="token string">"\nprint(str)"</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>换行符有点烦人，我们最后会用分号代替：Python
 允许两句代码写在同一行，中间用分号隔开。字符串中间很明显出现了双引号，这会导致字符串提前被闭合，但我们最后再来解决这个问题。</p>
 <p>「代词」在 Python
 中是什么？你可能想到了<code>.format()</code>或者<code>%</code>，配合字符串中的<code>%d</code>、<code>%s</code>就可以实现代指与替换。我们现在就来试试：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">str</span> = <span class="string">&quot;str = &quot;</span>%s<span class="string">&quot;\nprint(str % str)&quot;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span> % <span class="built_in">str</span>)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token builtin">str</span> <span class="token operator">=</span> <span class="token string">"str = "</span><span class="token operator">%</span>s<span class="token string">"\nprint(str % str)"</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">str</span> <span class="token operator">%</span> <span class="token builtin">str</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>在修改第二行时，记得把字符串里的对应部分一并修改。现在有点像是那么回事了，我们解决一下引号的问题，然后把代码放到同一行上去：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">str</span> = <span class="string">&quot;str = \&quot;%s\&quot;; print(str % str)&quot;</span>; <span class="built_in">print</span>(<span class="built_in">str</span> % <span class="built_in">str</span>)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token builtin">str</span> <span class="token operator">=</span> <span class="token string">"str = \"%s\"; print(str % str)"</span><span class="token punctuation">;</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">str</span> <span class="token operator">%</span> <span class="token builtin">str</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>转义符<code>\"</code>就可以避免提前结束字符串的问题了。好像写完了！我们运行一下试试：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">TypeError: not enough arguments for format string</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+TypeError: not enough arguments for format string<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>呃，报错了。我发现原因在于字符串里的<code>str % str</code>那里还有一个<code>%</code>，它似乎被当做格式化符处理了。把它改成<code>%%</code>就可以原样输出：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">str</span> = <span class="string">&quot;str = \&quot;%s\&quot;; print(str %% str)&quot;</span>; <span class="built_in">print</span>(<span class="built_in">str</span> % <span class="built_in">str</span>)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token builtin">str</span> <span class="token operator">=</span> <span class="token string">"str = \"%s\"; print(str %% str)"</span><span class="token punctuation">;</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">str</span> <span class="token operator">%</span> <span class="token builtin">str</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>现在再来试试。程序输出：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str = &quot;str = &quot;%s&quot;; print(str %% str)&quot;; print(str % str)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">str &#x3D; &quot;str &#x3D; &quot;%s&quot;; print(str %% str)&quot;; print(str % str)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>成功了——不对！仔细一看，用来转义双引号<code>\"</code>的转义符<code>\</code>没有输出。我想到了
 Python
 也可以用单引号来表示字符串，但一番尝试后，输出总是和源代码不一样。</p>
 <p>既然如此，干脆双引号也用<code>%</code>来替换掉好了：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">str</span> = <span class="string">&quot;str = %c%s%c; print(str %% str)&quot;</span>; <span class="built_in">print</span>(<span class="built_in">str</span> % (<span class="string">&#x27;&quot;&#x27;</span>, <span class="built_in">str</span>, <span class="string">&#x27;&quot;&#x27;</span>))</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token builtin">str</span> <span class="token operator">=</span> <span class="token string">"str = %c%s%c; print(str %% str)"</span><span class="token punctuation">;</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">str</span> <span class="token operator">%</span> <span class="token punctuation">(</span><span class="token string">'"'</span><span class="token punctuation">,</span> <span class="token builtin">str</span><span class="token punctuation">,</span> <span class="token string">'"'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><code>%c</code>表示输出一个字符。等等，我们还要把外面的代码抄进字符串里，如果还用<code>str % ('"', str, '"')</code>这样的表示法，双引号就又出现了。还是换成
 ASCII 码来代替吧：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">str</span> = <span class="string">&quot;str = %c%s%c; print(str %% (chr(34), str, chr(34)))&quot;</span>; <span class="built_in">print</span>(<span class="built_in">str</span> % (<span class="built_in">chr</span>(<span class="number">34</span>), <span class="built_in">str</span>, <span class="built_in">chr</span>(<span class="number">34</span>)))</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token builtin">str</span> <span class="token operator">=</span> <span class="token string">"str = %c%s%c; print(str %% (chr(34), str, chr(34)))"</span><span class="token punctuation">;</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">str</span> <span class="token operator">%</span> <span class="token punctuation">(</span><span class="token builtin">chr</span><span class="token punctuation">(</span><span class="token number">34</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">str</span><span class="token punctuation">,</span> <span class="token builtin">chr</span><span class="token punctuation">(</span><span class="token number">34</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>这样就可以消除掉外面代码里的引号了。运行试试：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str = &quot;str = %c%s%c; print(str %% (chr(34), str, chr(34)))&quot;; print(str % (chr(34), str, chr(34)))</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">str &#x3D; &quot;str &#x3D; %c%s%c; print(str %% (chr(34), str, chr(34)))&quot;; print(str % (chr(34), str, chr(34)))<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>成功了，输出结果和源代码一模一样！</p>
 <h2 id="更简单的解法">更简单的解法</h2>
 <p>但还有更短的写法。什么，这是怎么做到的？</p>
 <p>在 Python
 中有一种表示方式：<code>repr()</code>，可以将一个表达式的「表达式」形式表达出来。这句话很拗口，我还是举个例子吧：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">repr</span>(<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line"><span class="string">&quot;&#x27;a&#x27;&quot;</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">repr</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span>
+<span class="token string">"'a'"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><code>repr()</code>把<code>'a'</code>本身包括两边的引号，当做一个字符串返回了。这也许可以解决我们遇到的引号问题！</p>
 <p>在<code>%</code>替换格式的字符串中，<code>%r</code>表示表达式的<code>repr()</code>形式。也就是说，在我们的代码中，字符串中写着<code>%r</code>的地方，会自动加上两边的双引号。这下方便多了！</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">str</span> = <span class="string">&#x27;str = %r; print(str %% str)&#x27;</span>; <span class="built_in">print</span>(<span class="built_in">str</span> % <span class="built_in">str</span>)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token builtin">str</span> <span class="token operator">=</span> <span class="token string">'str = %r; print(str %% str)'</span><span class="token punctuation">;</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">str</span> <span class="token operator">%</span> <span class="token builtin">str</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>我把两边的引号换成了单引号，因为<code>%r</code>认为字符串的表达式默认用单引号括起来。输出结果如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str = &#x27;str = %r; print(str %% str)&#x27;; print(str % str)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">str &#x3D; &#39;str &#x3D; %r; print(str %% str)&#39;; print(str % str)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>你可以把代码写得更短，比如去掉空格，再比如给<code>str</code>取个短点的名字。我决定取名<code>_</code>，因为一个下划线也是合法的变量名，但看起来很有极客感。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_=<span class="string">&#x27;_=%r;print(_%%_)&#x27;</span>;<span class="built_in">print</span>(_%_)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">_<span class="token operator">=</span><span class="token string">'_=%r;print(_%%_)'</span><span class="token punctuation">;</span><span class="token keyword">print</span><span class="token punctuation">(</span>_<span class="token operator">%</span>_<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>输出如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_=&#x27;_=%r;print(_%%_)&#x27;;print(_%_)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">_&#x3D;&#39;_&#x3D;%r;print(_%%_)&#39;;print(_%_)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="更简单的解法-1">更——简单的解法</h2>
 <p>……什么？还有更简单的解法？</p>
 <p>没错。代码如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> </span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>输出如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> </span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none"> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>空代码！既然在 Python 中空代码也算是合法的代码文件，那自然这也算是
 Quine 的解。</p>
 <p>我知道你现在的心情。这算是作弊了吧？但这段——呃——「代码」确实符合要求。它的作者
@@ -207,7 +221,7 @@ Rules
 <script src="/static/hingle.js"></script>
 
 
-<script>var hingle = new Paul_Hingle({"copyright":true,"night":true});</script>
+<script>var hingle = new Paul_Hingle({"copyright":false,"night":false});</script>
 
   </body>
 </html>
