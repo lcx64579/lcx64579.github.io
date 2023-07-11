@@ -111,7 +111,7 @@ DOOM和Master
 Levels，属于二代的内容，它们的WAD应当是<code>tnt.wad</code>和<code>plutonia.wad</code>。把相应的文件拷贝出来，放在GZDoom要求的路径。你可以运行一次GZDoom，看看它的报错信息来确定要求的路径在哪。对于Windows来说，一般是GZDoom的程序目录；对于macOS来说，一般是<code>~/Library/Application Support/gzdoom/</code>（需要自己创建）。</p>
 <h3 id="mod">MOD</h3>
 <p>如果只打算游玩原版游戏，现在你就可以运行GZDoom开玩了。不过我们是来玩MOD的，因此下一步就是加载MOD文件。</p>
-<p>一般来说DOOM的MOD有两种形式：<code>.wad</code>和<code>.pk3</code>。无论是哪种，只要把MOD文件作为参数传给GZDoom就可以加载。对于Windows来说，简便的操作方式就是把MOD文件拖到GZDoom的图标上；对于macOS来说，打开GZDoom后，下方会有个选取文件用的「浏览」按钮。无论是哪种，本质上都是向GZDoom传参<code>-file [MOD File]</code>。</p>
+<p>一般来说DOOM的MOD有两种文件后缀名：<code>.wad</code>和<code>.pk3</code>，少数会是其他类型。无论是哪种，只要把MOD文件作为参数传给GZDoom就可以加载。对于Windows来说，简便的操作方式就是把MOD文件拖到GZDoom的图标上；对于macOS来说，打开GZDoom后，下方会有个选取文件用的「浏览」按钮。无论是哪种，本质上都是向GZDoom传参<code>-file [MOD File]</code>。</p>
 <p>随后GZDoom会打开。如果你有不止一个基础游戏的话，GZDoom还会再询问一下你要选择的基础游戏。或者你也可以直接传参。一定注意，有些MOD是特别为某个版本的游戏定制的，例如不少对游戏玩法全面改变的MOD只能在DOOM
 2上运行。</p>
 <p>不过这种方式通常只适合少量加载MOD。一旦MOD数量多起来就会很麻烦了，而且会遇到烦人的加载顺序问题。一般来说，地图在先，其他在后。像这种事手动写参数去传会很麻烦，因此社区中产生了许多MOD加载器，或者可以直接说是游戏启动器。</p>
@@ -130,9 +130,13 @@ DOOM增加了一些难度选项，也允许你选择开场就拿到自动步枪�
 4开发时对此MOD也有参考。原版的枪械手感在今天来看可以说是「软绵绵」，因此新手入坑强烈推荐此模组，能极大改善体验。</p>
 <h3 id="project-brutality">Project Brutality</h3>
 <p><a target="_blank" rel="noopener" href="https://projectbrutality.com/">官网点此处</a>。Brutal
-DOOM的进化版，不过不需要原版Brutal DOOM。说实话我感觉手感不如Brutal
-DOOM，不过确实加了不少有趣元素，比如不同各类的弹药与酷炫特效。</p>
-<p>少见的是，它既不是<code>.wad</code>也不是<code>.pk3</code>，而是要你把整个GitHub仓库下载下来当<code>.zip</code>加载。</p>
+DOOM的变体，不依赖原版Brutal DOOM。说实话我感觉手感不如Brutal
+DOOM，不过确实加了不少有趣元素，比如不同各类的弹药、特殊动作与酷炫特效。</p>
+<p>顺便一提，它既不是<code>.wad</code>也不是<code>.pk3</code>，而是要你把整个GitHub仓库下载下来当<code>.zip</code>加载。</p>
+<h3 id="hitmarkers">HitMarkers</h3>
+<p><a target="_blank" rel="noopener" href="https://github.com/Tekkish/HitMarkers">GitHub 地址</a></p>
+<p>一个简单的击中显示，包括屏幕中心的视觉反馈和可自定义的听觉反馈。我十分喜欢它自带的Call
+of Duty 4击中音效。我在体验原版时通常只用Brutal DOOM和HitMarkers。</p>
 <h3 id="my-house">My House</h3>
 <p>这个MOD实际上才是我在2023年决定入坑DOOM的理由。一句话来说，这个MOD火出圈了。<a
 target="_blank" rel="noopener" href="https://youtu.be/5wAo54DHDY0">Youtube上的一个视频</a>（包含剧透）详细介绍了这个MOD的一切。得益于其2023年推出，它包括了时下新兴的都市怪谈类亚文化，辅以惊世骇俗的地图制作技巧、细腻入微的心理描画与氛围塑造，加上与现实联动的ARG，使得它给整个DOOM社区带来了无比的震撼，并不禁令人重新思考DOOM玩家自制模组的无限可能性。</p>
@@ -140,8 +144,8 @@ target="_blank" rel="noopener" href="https://youtu.be/5wAo54DHDY0">Youtube上的
 Scare但很压抑的那种。慎重游玩。</p>
 <h3 id="doom-episode---1-remaster">Doom Episode - 1 Remaster</h3>
 <p><a
-target="_blank" rel="noopener" href="https://forum.zdoom.org/viewtopic.php?f=42&amp;t=73129">下载地址</a>
-DOOM的第一章重制版。有精细的纹理和现代光影效果。</p>
+target="_blank" rel="noopener" href="https://forum.zdoom.org/viewtopic.php?f=42&amp;t=73129">下载地址</a></p>
+<p>DOOM的第一章重制版。有精细的纹理和现代光影效果。</p>
 <h2 id="mod制作">MOD制作</h2>
 <p>如果你对《My House》中那些看起来颠覆世界观的神奇地图技巧有兴趣（<a
 target="_blank" rel="noopener" href="https://youtu.be/Iq1-TZXz9xo">这个视频</a>对此进行了技术分析），也许可以试试自己制作地图。<a
