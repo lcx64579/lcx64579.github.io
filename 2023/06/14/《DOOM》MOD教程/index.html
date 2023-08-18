@@ -63,93 +63,148 @@
         <article class="post-content">
         
             <blockquote>
-<p>我仍在探索游玩DOOM，因此本教程未来可能会更新。</p>
+<p>我仍在探索游玩 DOOM，因此本教程未来可能会更新。</p>
 </blockquote>
-<p>真的要认真玩经典老DOOM的话，最好的选择是不要直接在你的Steam库里点「开始游戏」，因为那样就只限于30年前的原版体验了。不可否认，约翰・卡马克是当之无愧的天才，他的DOOM与Wolfenstein、Quake一起定义了「FPS游戏」本身。但如今，FPS游戏已经过不知多少个世代；而能令DOOM时隔多年经久不衰，其真正耀眼之处早已不在其原版游戏，而在于其世界上最可观的游戏社区支持，使得它在这许多年中不断发展，生生不息。</p>
+<p>真的要认真玩经典老 DOOM 的话，最好的选择是不要直接在你的 Steam
+库里点「开始游戏」，因为那样就只限于 30
+年前的原版体验了。不可否认，约翰・卡马克是当之无愧的天才，他的 DOOM 与
+Wolfenstein、Quake 一起定义了「FPS 游戏」本身。但如今，FPS
+游戏已经过不知多少个世代；而能令 DOOM
+时隔多年经久不衰，其真正耀眼之处早已不在其原版游戏，而在于其世界上最可观的游戏社区支持，使得它在这许多年中不断发展，生生不息。</p>
 <blockquote>
-<p>不要着急，你的Steam里的DOOM没有白买。下面会用到它的。</p>
+<p>不要着急，你的 Steam 里的 DOOM 没有白买。下面会用到它的。</p>
 </blockquote>
-<h2 id="如何在doom中使用mod">如何在DOOM中使用MOD？</h2>
-<p>为了在DOOM中加载MOD，你需要准备这些东西。</p>
+<h2 id="如何在-doom-中使用-mod">如何在 DOOM 中使用 MOD？</h2>
+<p>为了在 DOOM 中加载 MOD，你需要准备这些东西。</p>
 <ul>
 <li>Source Port</li>
 <li>Base WAD</li>
-<li>MOD文件</li>
+<li>MOD 文件</li>
 </ul>
 <h3 id="source-port">Source Port</h3>
 <p><a target="_blank" rel="noopener" href="https://zdoom.org/wiki/Source_port">Source
-Port</a>是DOOM游戏的基本引擎，用现代的方法重写了DOOM的基本代码，使得这一游戏可以在30年后的今天以现代的方式运行在许多平台上，包括Windows，macOS和Linux。一般的Source
-Port提供了许多现代功能的支持，包括高分辨率、现代图形学特性、自行指定的图形渲染接口、MOD支持、3D渲染与高级地图特性等。至少它们可以让你不用再去找台DOS电脑或是依赖于DOSBox运行游戏了。</p>
-<p>今天最流行的两个Source Port分别是GZDoom和Zandronum。</p>
+Port</a>，字面意思「源码移植」，是 DOOM
+游戏的基本引擎，用现代的方法移植了 DOOM 的引擎代码，使得这一游戏可以在
+30 年后的今天以现代的方式运行在许多平台上，包括 Windows，macOS 和
+Linux。一般的 Source Port
+提供了许多现代功能的支持，包括高分辨率、现代图形学特性、自行指定的图形渲染接口、MOD
+支持、3D 渲染与高级地图特性等。至少它们可以让你不用再去找台 DOS
+电脑或是依赖于 DOSBox 运行游戏了。</p>
+<p>今天最流行的两个 Source Port 分别是 GZDoom 和 Zandronum。</p>
 <ul>
-<li>GZDoom是无可争议的最流行的Source
-Port，主打最好的单人游戏体验，人物可以跳可以蹲，对最多的Base
-WAD提供支持，开源免费。</li>
-<li>Zandronum更适合喜爱多人的玩家，并提供了方便的服务器搜寻功能。</li>
+<li>GZDoom 是无可争议的最流行的 Source
+Port，主打最好的单人游戏体验，人物可以跳可以蹲，对最多的 Base WAD
+提供支持，开源免费。</li>
+<li>Zandronum 更适合喜爱多人的玩家，并提供了方便的服务器搜寻功能。</li>
 </ul>
 <p>你也可以在<a
-target="_blank" rel="noopener" href="https://www.doomworld.com/classicdoom/ports/?platform=2">这里</a>找到更多仍在支持的Source
-Port。GZDoom是最流行的Source Port，因此下面我们将以GZDoom举例。</p>
+target="_blank" rel="noopener" href="https://www.doomworld.com/classicdoom/ports/?platform=2">这里</a>找到更多仍在支持的
+Source Port。GZDoom 是最流行的 Source Port，因此下面我们将以 GZDoom
+举例。</p>
 <h3 id="base-wad">Base WAD</h3>
-<p>但只有Source
-Port是不够的。它只是一个游戏引擎，而不包含游戏内容，例如模型、地图和声音。尽管约翰・卡马克开源了DOOM的源代码，但游戏内容仍是受id
-Software公司的版权保护的。因此，你必须自己提供这些东西。它们被称为Base
-WAD，其中WAD是DOOM所采用的数据格式，是「Where's All the
-Data?」的简写。WAD文件中包含了一切的游戏内容，所以有时我们也叫它「基础游戏」。</p>
-<p>去哪里获取Base
-WAD呢？显然，正确的方法是去买一份正版的1993年版DOOM，或者其续作DOOM
-2，然后从你的正版合法游戏中拷贝出数据文件。以DOOM一代（在Steam上称作「Ultimate
-DOOM」）为例，2023年购买正版DOOM的渠道主要有Steam和GOG。前者无需赘述；后者是一个专门出售老游戏的线上游戏商城平台，其母公司是开发了著名的《赛博朋克2077》的CDPR。</p>
+<p>但只有 Source Port
+是不够的。它只是一个游戏引擎，而不包含游戏内容，例如模型、地图和声音。尽管约翰・卡马克开源了
+DOOM 的源代码，但游戏内容仍是受 id Software
+公司的版权保护的。因此，你必须自己提供这些东西。它们被称为 Base WAD 或是
+IWAD，其中 WAD 是 DOOM 所采用的数据格式，是「Where's All the
+Data?」的简写。WAD
+文件中包含了一切的游戏内容，所以有时我们也叫它「基础游戏」。</p>
+<p>去哪里获取 Base WAD 呢？显然，正确的方法是去买一份正版的 1993 年版
+DOOM，或者其续作 DOOM 2，然后从你的正版合法游戏中拷贝出数据文件。以 DOOM
+一代（在 Steam 上称作「Ultimate DOOM」）为例，2023 年购买正版 DOOM
+的渠道主要有 Steam 和
+GOG。前者无需赘述；后者是一个专门出售老游戏的线上游戏商城平台，其母公司是开发了著名的《赛博朋克
+2077》的 CDPR。</p>
 <blockquote>
-<p>我强烈推荐GOG平台，因为他们主打「免DRM」，也就是说，你买到的游戏不需要任何正版验证手段：不像Steam那样，打开游戏就必须打开Steam平台，必须登录购买了游戏的账号，即使切换到离线模式也必须至少七天上线一次进行所有权验证。不，GOG的「免DRM」意味着：你买来的游戏就是你的。你不用打开GOG平台，不用登录账号，可以断网，甚至可以自由拿着U盘拷贝到你的其他电脑上玩。</p>
+<p>我强烈推荐 GOG 平台，因为他们主打「免
+DRM」，也就是说，你买到的游戏不需要任何正版验证手段：不像 Steam
+那样，打开游戏就必须打开 Steam
+平台，必须登录购买了游戏的账号，即使切换到离线模式也必须至少七天上线一次进行所有权验证。不，GOG
+的「免 DRM」意味着：你买来的游戏就是你的。你不用打开 GOG
+平台，不用登录账号，可以断网，甚至可以自由拿着 U
+盘拷贝到你的其他电脑上玩。</p>
 </blockquote>
-<p>没钱怎么办？也有一些免费合法就能得到的共享版本，例如DOOM
-(Shareware)，只包含一部分关卡；或者是著名的玩家自制基础游戏Freedoom，利用DOOM的引擎做出了相当水准的原创关卡。</p>
-<p>买到DOOM后，就可以提取Base
-WAD了：下载好DOOM后，打开游戏所在的文件夹，找到里面的以<code>.wad</code>结尾的文件。对于DOOM一代来说，应当是<code>DOOM.wad</code>；对于二代来说，应当是<code>DOOM2.wad</code>。另外还有Final
-DOOM和Master
-Levels，属于二代的内容，它们的WAD应当是<code>tnt.wad</code>和<code>plutonia.wad</code>。把相应的文件拷贝出来，放在GZDoom要求的路径。你可以运行一次GZDoom，看看它的报错信息来确定要求的路径在哪。对于Windows来说，一般是GZDoom的程序目录；对于macOS来说，一般是<code>~/Library/Application Support/gzdoom/</code>（需要自己创建）。</p>
+<p>没钱怎么办？也有一些免费合法就能得到的共享版本，例如 DOOM
+(Shareware)，只包含一部分关卡；或者是著名的玩家自制基础游戏
+Freedoom，利用 DOOM 的引擎做出了相当水准的原创关卡。</p>
+<p>买到 DOOM 后，就可以提取 Base WAD 了：下载好 DOOM
+后，打开游戏所在的文件夹，找到里面的以<code>.wad</code>结尾的文件。对于
+DOOM
+一代来说，应当是<code>DOOM.wad</code>；对于二代来说，应当是<code>DOOM2.wad</code>。另外还有
+Final DOOM 和 Master Levels，属于二代的内容，它们的 WAD
+应当是<code>tnt.wad</code>和<code>plutonia.wad</code>。把相应的文件拷贝出来，放在
+GZDoom 要求的路径。你可以运行一次
+GZDoom，看看它的报错信息来确定要求的路径在哪。对于 Windows 来说，一般是
+GZDoom 的程序目录；对于 macOS
+来说，一般是<code>~/Library/Application Support/gzdoom/</code>（需要自己创建）。</p>
 <h3 id="mod">MOD</h3>
-<p>如果只打算游玩原版游戏，现在你就可以运行GZDoom开玩了。不过我们是来玩MOD的，因此下一步就是加载MOD文件。</p>
-<p>一般来说DOOM的MOD有两种文件后缀名：<code>.wad</code>和<code>.pk3</code>，少数会是其他类型。无论是哪种，只要把MOD文件作为参数传给GZDoom就可以加载。对于Windows来说，简便的操作方式就是把MOD文件拖到GZDoom的图标上；对于macOS来说，打开GZDoom后，下方会有个选取文件用的「浏览」按钮。无论是哪种，本质上都是向GZDoom传参<code>-file [MOD File]</code>。</p>
-<p>随后GZDoom会打开。如果你有不止一个基础游戏的话，GZDoom还会再询问一下你要选择的基础游戏。或者你也可以直接传参。一定注意，有些MOD是特别为某个版本的游戏定制的，例如不少对游戏玩法全面改变的MOD只能在DOOM
-2上运行。</p>
-<p>不过这种方式通常只适合少量加载MOD。一旦MOD数量多起来就会很麻烦了，而且会遇到烦人的加载顺序问题。一般来说，地图在先，其他在后。像这种事手动写参数去传会很麻烦，因此社区中产生了许多MOD加载器，或者可以直接说是游戏启动器。</p>
+<p>如果只打算游玩原版游戏，现在你就可以运行 GZDoom
+开玩了。不过我们是来玩 MOD 的，因此下一步就是加载 MOD 文件。</p>
+<p>一般来说 DOOM 的 MOD
+有两种文件后缀名：<code>.wad</code>和<code>.pk3</code>，少数会是其他类型。无论是哪种，只要把
+MOD 文件作为参数传给 GZDoom 就可以加载。对于 Windows
+来说，简便的操作方式就是把 MOD 文件拖到 GZDoom 的图标上；对于 macOS
+来说，打开 GZDoom
+后，下方会有个选取文件用的「浏览」按钮。无论是哪种，本质上都是向 GZDoom
+传参<code>-file [MOD File]</code>。</p>
+<p>随后 GZDoom 会打开。如果你有不止一个基础游戏的话，GZDoom
+还会再询问一下你要选择的基础游戏。或者你也可以直接传参。一定注意，有些
+MOD 是特别为某个版本的游戏定制的，例如不少对游戏玩法全面改变的 MOD
+只能在 DOOM 2 上运行。</p>
+<p>不过这种方式通常只适合少量加载 MOD。一旦 MOD
+数量多起来就会很麻烦了，而且会遇到烦人的加载顺序问题。一般来说，地图在先，其他在后。像这种事手动写参数去传会很麻烦，因此社区中产生了许多
+MOD 加载器，或者可以直接说是游戏启动器。</p>
 <h3 id="启动器">启动器</h3>
-<p>启动器把上面的整个流程统合起来，用一个工具一起管理。它们用直观的GUI界面简化了MOD的加载，也可以简单地切换游戏版本与Source
-Port。许多启动器还可以把你喜欢的一整套MOD保存成一套预置，即可方便快捷地在不同的体验之间切换。著名的启动器有ZDL和Doom
-Runner，但它们都不支持macOS，而我是mac玩家，因此就不展开说了。</p>
-<h2 id="mod推荐">MOD推荐</h2>
-<p>笔者刚刚入坑，因此不会班门弄斧深度推荐，只会以个人偏见为基准，提及一些我听说过的MOD。</p>
+<p>启动器把上面的整个流程统合起来，用一个工具一起管理。它们用直观的 GUI
+界面简化了 MOD 的加载，也可以简单地切换游戏版本与 Source
+Port。许多启动器还可以把你喜欢的一整套 MOD
+保存成一套预置，即可方便快捷地在不同的体验之间切换。著名的启动器有 ZDL
+和 Doom Runner，但它们都不支持 macOS，而我是 mac
+玩家，因此就不展开说了。</p>
+<h2 id="mod-推荐">MOD 推荐</h2>
+<p>笔者刚刚入坑，因此不会班门弄斧深度推荐，只会以个人偏见为基准，提及一些我听说过的
+MOD。</p>
 <h3 id="brutal-doom">Brutal DOOM</h3>
-<p>支持任何一作DOOM。全面升级了DOOM的画面细节、特效、枪械手感与声音。杀死敌人后会喷出大量粒子特效，多到会令电脑卡顿。不骗人，这个MOD对电脑配置是有一定要求的。场景中粒子特效多起来的时候真的会卡，不然就要去设置里面降低一部分特效。</p>
-<p>这个MOD己经著名到几乎必备的程度，甚至不少其他MOD会要求这个MOD作为前置。许多人会调侃说：这己经不是在玩DOOM的MOD，而是在玩Brutal
-DOOM的MOD了。</p>
-<p>Brutal
-DOOM增加了一些难度选项，也允许你选择开场就拿到自动步枪。总之一切都为了快感服务。甚至传说DOOM
-4开发时对此MOD也有参考。原版的枪械手感在今天来看可以说是「软绵绵」，因此新手入坑强烈推荐此模组，能极大改善体验。</p>
+<p>支持任何一作 DOOM。全面升级了 DOOM
+的画面细节、特效、枪械手感与声音。杀死敌人后会喷出大量粒子特效，多到会令电脑卡顿。不骗人，这个
+MOD
+对电脑配置是有一定要求的。场景中粒子特效多起来的时候真的会卡，不然就要去设置里面降低一部分特效。</p>
+<p>这个 MOD 己经著名到几乎必备的程度，甚至不少其他 MOD 会要求这个 MOD
+作为前置。许多人会调侃说：这己经不是在玩 DOOM 的 MOD，而是在玩 Brutal
+DOOM 的 MOD 了。</p>
+<p>Brutal DOOM
+增加了一些难度选项，也允许你选择开场就拿到自动步枪。总之一切都为了快感服务。甚至传说
+DOOM 4 开发时对此 MOD
+也有参考。原版的枪械手感在今天来看可以说是「软绵绵」，因此新手入坑强烈推荐此模组，能极大改善体验。</p>
 <h3 id="project-brutality">Project Brutality</h3>
-<p><a target="_blank" rel="noopener" href="https://projectbrutality.com/">官网点此处</a>。Brutal
-DOOM的变体，不依赖原版Brutal DOOM。说实话我感觉手感不如Brutal
+<p><a target="_blank" rel="noopener" href="https://projectbrutality.com/">官网点此处</a>。Brutal DOOM
+的变体，不依赖原版 Brutal DOOM。说实话我感觉手感不如 Brutal
 DOOM，不过确实加了不少有趣元素，比如不同各类的弹药、特殊动作与酷炫特效。</p>
-<p>顺便一提，它既不是<code>.wad</code>也不是<code>.pk3</code>，而是要你把整个GitHub仓库下载下来当<code>.zip</code>加载。</p>
+<p>顺便一提，它既不是<code>.wad</code>也不是<code>.pk3</code>，而是要你把整个
+GitHub 仓库下载下来当<code>.zip</code>加载。</p>
 <h3 id="hitmarkers">HitMarkers</h3>
 <p><a target="_blank" rel="noopener" href="https://github.com/Tekkish/HitMarkers">GitHub 地址</a></p>
-<p>一个简单的击中显示，包括屏幕中心的视觉反馈和可自定义的听觉反馈。我十分喜欢它自带的Call
-of Duty 4击中音效。我在体验原版时通常只用Brutal DOOM和HitMarkers。</p>
+<p>一个简单的击中显示，包括屏幕中心的视觉反馈和可自定义的听觉反馈。我十分喜欢它自带的
+Call of Duty 4 击中音效。我在体验原版时通常只用 Brutal DOOM 和
+HitMarkers。</p>
 <h3 id="my-house">My House</h3>
-<p>这个MOD实际上才是我在2023年决定入坑DOOM的理由。一句话来说，这个MOD火出圈了。<a
-target="_blank" rel="noopener" href="https://youtu.be/5wAo54DHDY0">Youtube上的一个视频</a>（包含剧透）详细介绍了这个MOD的一切。得益于其2023年推出，它包括了时下新兴的都市怪谈类亚文化，辅以惊世骇俗的地图制作技巧、细腻入微的心理描画与氛围塑造，加上与现实联动的ARG，使得它给整个DOOM社区带来了无比的震撼，并不禁令人重新思考DOOM玩家自制模组的无限可能性。</p>
-<p>但它是心理暗示类恐怖游戏。虽然没有Jump
-Scare但很压抑的那种。慎重游玩。</p>
+<p>这个 MOD 实际上才是我在 2023 年决定入坑 DOOM 的理由。一句话来说，这个
+MOD 火出圈了。<a target="_blank" rel="noopener" href="https://youtu.be/5wAo54DHDY0">Youtube
+上的一个视频</a>（包含剧透）详细介绍了这个 MOD 的一切。得益于其 2023
+年推出，它包括了时下新兴的都市怪谈类亚文化，辅以惊世骇俗的地图制作技巧、细腻入微的心理描画与氛围塑造，加上与现实联动的
+ARG，使得它给整个 DOOM 社区带来了无比的震撼，并不禁令人重新思考 DOOM
+玩家自制模组的无限可能性。</p>
+<p>但它是心理暗示类恐怖游戏。虽然没有 Jump Scare
+但很压抑的那种。慎重游玩。</p>
 <h3 id="doom-episode---1-remaster">Doom Episode - 1 Remaster</h3>
 <p><a
 target="_blank" rel="noopener" href="https://forum.zdoom.org/viewtopic.php?f=42&amp;t=73129">下载地址</a></p>
-<p>DOOM的第一章重制版。有精细的纹理和现代光影效果。</p>
-<h2 id="mod制作">MOD制作</h2>
+<p>DOOM 的第一章重制版。有精细的纹理和现代光影效果。</p>
+<h2 id="mod-制作">MOD 制作</h2>
 <p>如果你对《My House》中那些看起来颠覆世界观的神奇地图技巧有兴趣（<a
 target="_blank" rel="noopener" href="https://youtu.be/Iq1-TZXz9xo">这个视频</a>对此进行了技术分析），也许可以试试自己制作地图。<a
-target="_blank" rel="noopener" href="https://youtu.be/EucWtn__O8Q">这个Youtube视频</a>教你从什么都不会开始，做出自己的第一张DOOM地图。</p>
+target="_blank" rel="noopener" href="https://youtu.be/EucWtn__O8Q">这个 Youtube
+视频</a>教你从什么都不会开始，做出自己的第一张 DOOM 地图。</p>
 
         </article>
         <section class="post-near">
